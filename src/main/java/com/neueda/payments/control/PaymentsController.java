@@ -1,7 +1,9 @@
 package com.neueda.payments.control;
 
+import com.neueda.payments.exceptions.PaymentNotFoundException;
 import com.neueda.payments.model.Payment;
 import com.neueda.payments.service.PaymentsService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,13 +19,25 @@ public class PaymentsController {
         this.paymentsService = paymentsService;
     }
 
-    @GetMapping(path = "/payment")
-    public List<Payment> getPayments() {
-        return paymentsService.getAllPayments();
+    @GetMapping("payment/{id}")
+    public Payment getPaymentById(@PathVariable Long id) throws PaymentNotFoundException {
+        return paymentsService.findById(id);
     }
 
-    @GetMapping("payment/{id}")
-    public Payment getPaymentById(@PathVariable Long id) {
-        return paymentsService.findById(id);
+    @PostMapping(value = "payment/", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Payment addPayment(@RequestBody Payment payment) {
+        return paymentsService.save(payment);
+    }
+
+    @GetMapping(value = "payment/", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public List<Payment> getPaymentById(@RequestParam(required = false) String country,
+                                        @RequestParam(required = false) String orderId) {
+        if(orderId != null) {
+            return paymentsService.getByOrderId(orderId);
+        } else if (country != null) {
+            return paymentsService.findByCountry(country);
+        } else {
+            return paymentsService.getAllPayments();
+        }
     }
 }
