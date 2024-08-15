@@ -2,6 +2,7 @@ package com.neueda.payments.service;
 
 import com.neueda.payments.model.Payment;
 import com.neueda.payments.repositories.PaymentsRepository;
+import com.neueda.payments.repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +18,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class EntityTest {
 
+    @MockBean
+    private UserRepository userRepository;
     @MockBean
     private PaymentsRepository paymentsRepository;
 
