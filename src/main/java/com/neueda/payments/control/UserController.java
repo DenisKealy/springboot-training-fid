@@ -20,12 +20,12 @@ public class UserController {
 
     @GetMapping("/user")
     public List<UserDTO> getUsers() {
-        return userService.findAll().stream().map(UserDTO::new).toList();
+        return userService.getAll().stream().map(UserDTO::new).toList();
     }
 
     @GetMapping("/user/{id}")
     public UserDTO findById(@PathVariable Long id) {
-        return new UserDTO(userService.findById(id));
+        return new UserDTO(userService.getById(id));
     }
 
     @PostMapping("/user")

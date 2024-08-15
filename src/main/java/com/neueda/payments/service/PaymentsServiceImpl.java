@@ -45,6 +45,12 @@ public class PaymentsServiceImpl implements PaymentsService {
     }
 
     @Override
+    public List<String> getUniqueCountries() {
+        List<Payment> p = paymentsRepository.findAll();
+        return p.stream().map(Payment::getCountry).distinct().sorted().toList();
+    }
+
+    @Override
     public Payment save(Payment payment) {
         return paymentsRepository.save(payment);
     }

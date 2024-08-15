@@ -16,4 +16,6 @@ public interface PaymentsService {
     List<Payment> findByCountry(String country);
 
     List<Payment> getByOrderId(String orderId);
+
+    List<String> getUniqueCountries();
 }
