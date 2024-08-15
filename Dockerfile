@@ -5,9 +5,9 @@ ADD target/payments-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 ARG DBUSER
-ENV DBUSER=$DBUSER
+ENV DBUSER=root
 
 ARG DBPASSWORD
-ENV DBPASSWORD=$DBPASSWORD
+ENV DBPASSWORD=pass123
 
 CMD ["java","-jar","-Dspring.profiles.active=production", "app.jar"]
