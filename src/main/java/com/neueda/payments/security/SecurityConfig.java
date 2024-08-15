@@ -38,7 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain openUrls(HttpSecurity http)
             throws Exception {
 
-        http.securityMatcher("/health", "/swagger-ui/index.html")
+        http.securityMatcher("/health", "/swagger-ui/**", "/v3/api-docs/**")
                 .authorizeHttpRequests( auth ->
                         auth.anyRequest().permitAll());
 
