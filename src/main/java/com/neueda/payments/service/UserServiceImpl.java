@@ -2,6 +2,7 @@ package com.neueda.payments.service;
 
 import com.neueda.payments.model.User;
 import com.neueda.payments.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,9 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {

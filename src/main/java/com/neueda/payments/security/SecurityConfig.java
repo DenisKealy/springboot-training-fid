@@ -17,7 +17,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Autowired
     UserDetailsService userDetailsService;
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {

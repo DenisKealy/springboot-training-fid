@@ -3,6 +3,7 @@ package com.neueda.payments.control;
 import com.neueda.payments.exceptions.PaymentNotFoundException;
 import com.neueda.payments.model.Payment;
 import com.neueda.payments.service.PaymentsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 public class PaymentsController {
 
+    @Autowired
     private final PaymentsService paymentsService;
 
     public PaymentsController(PaymentsService paymentsService) {

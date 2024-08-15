@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserBootstrapService {
 
+    @Autowired
     private UserService userService;
 
+    @Autowired
     private UserRepository userRepository;
 
     public UserBootstrapService(UserService userService, UserRepository userRepository) {

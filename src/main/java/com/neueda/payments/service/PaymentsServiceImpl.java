@@ -15,6 +15,7 @@ import java.util.*;
 public class PaymentsServiceImpl implements PaymentsService {
 
     private Logger logger = LoggerFactory.getLogger(PaymentsServiceImpl.class);
+    @Autowired
     private PaymentsRepository paymentsRepository;
 
     public PaymentsServiceImpl(PaymentsRepository paymentsRepository) {
